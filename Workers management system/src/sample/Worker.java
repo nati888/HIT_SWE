@@ -1,15 +1,17 @@
+import java.util.ArrayList;
 
 public class Worker extends Person {
-    public Worker(  String last_name, String first_name, int ID,int ID_Worker, String job_name, int department_id,int Job_ID, float experience, float base_salary, float hours, String assessment, String password) {
-        super(last_name, first_name, ID);
+    int NUM_WORKER=1;
+    public Worker(  String last_name, String first_name, int ID,int ID_Worker, String job_name, int department_id,int Job_ID, float experience, float base_salary, float hours, ArrayList<String> assessment, String password) {
+
         this.job_name = job_name;
         this.department_ID = department_id;
         this.experience = experience;
         this.base_Salary = base_salary;
         this.hours = hours;
-        this.assessment =null;
+        this.assessment =new  ArrayList<String>();
         this.password = password;
-        this.ID_Worker=ID_Worker;
+        this.ID_Worker=NUM_WORKER++;
         this.job_ID=job_ID;
     }
     private int  ID_Worker;
@@ -18,7 +20,7 @@ public class Worker extends Person {
     private float experience;
     private float base_Salary;
     private  float hours;
-    private  String assessment;
+    private ArrayList<String> assessment;
     private  String password;
     private int  job_ID;
     void changeJobID(int new_ID){
@@ -39,12 +41,16 @@ public class Worker extends Person {
     float caluculateSalary(){
         return base_Salary*hours;
     }
-    void addAssessement(String assessment){
-      this.assessment=assessment;
+    void addAssessement(String assessment1){
+        assessment.add(assessment1);
     }
-    boolean changePassword(String new_pass){
-        this.password=new_pass;
-        return true;
+    boolean changePassword(String new_pass) {
+        if (new_pass.length() > 8)
+        {
+            this.password = new_pass;
+            return true;
+        }
+        return false;
     }
 }
 
