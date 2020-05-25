@@ -1,21 +1,23 @@
-package sample;
-
 import java.util.ArrayList;
 
-public class Workers extends Worker {
-    private ArrayList<Person> Worker = new ArrayList<Person>();
+public class Workers {
+    private ArrayList<Worker> Workers;
 
-    public Workers(String last_name, String first_name, int ID, int ID_Worker, String job_name, int department_id, float experience, float base_salary, float hours, String assessment, String password) {
-        super(last_name, first_name, ID, ID_Worker, job_name, department_id, experience, base_salary, hours, assessment, password);
+    public Workers(ArrayList<Worker> workers) {
+        Workers =new ArrayList<Worker>();
     }
-
-
-    void addWorker( Person worker){
-        Worker.add(worker);
-
+    void addWorker(Worker new_worker){
+        Workers.add(new_worker);
     }
-
-
-
+    void removeWorker(Worker remove_worker) {
+        Workers.remove(remove_worker);
+    }
+    Worker searchingWorker(int ID){
+        for (int i=0;i<this.Workers.size();i++){
+           Worker worker=this.Workers.get(i);
+           if(worker.getID_Worker()==ID)
+               return worker;
+        }
+        return null;
+    }
 }
-
