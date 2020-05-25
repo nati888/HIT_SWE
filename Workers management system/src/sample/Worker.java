@@ -1,28 +1,31 @@
 import java.util.ArrayList;
 
 public class Worker extends Person {
-    int NUM_WORKER=1;
-    public Worker(  String last_name, String first_name, int ID,int ID_Worker, String job_name, int department_id,int Job_ID, float experience, float base_salary, float hours, ArrayList<String> assessment, String password) {
+    int NUM_WORKER = 1;
 
+    public Worker(String last_name, String first_name, int ID, int ID_Worker, String job_name, int department_id, int Job_ID, float experience, float base_salary, float hours, ArrayList<String> assessment, String password) {
+        super(last_name, first_name, ID);
         this.job_name = job_name;
         this.department_ID = department_id;
         this.experience = experience;
         this.base_Salary = base_salary;
         this.hours = hours;
-        this.assessment =new  ArrayList<String>();
+        this.assessment = new ArrayList<String>();
         this.password = password;
-        this.ID_Worker=NUM_WORKER++;
-        this.job_ID=job_ID;
+        this.ID_Worker = NUM_WORKER++;
+        this.job_ID = job_ID;
     }
-    private int  ID_Worker;
+
+    private int ID_Worker;
     private String job_name;
     private int department_ID;
     private float experience;
     private float base_Salary;
-    private  float hours;
+    private float hours;
     private ArrayList<String> assessment;
-    private  String password;
-    private int  job_ID;
+    private String password;
+    private int job_ID;
+      
     void changeJobID(int new_ID){
         this.job_ID=new_ID;
     }
