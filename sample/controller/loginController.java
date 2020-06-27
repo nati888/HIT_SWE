@@ -1,4 +1,4 @@
-package sample.controller;
+package controller;
 
 import sample.model.Worker;
 import sample.model.Workers;
