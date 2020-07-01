@@ -1,5 +1,6 @@
 package sample.model;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class addWorkerRepository {
 
@@ -13,14 +14,14 @@ public class addWorkerRepository {
         return Instance;
     }
 
-    public boolean addWorker(String last_name,String first_name,String ID, String mail,String department_id, String Job_ID, String experience, String base_salary, String hours, String user_name, String password){
-        Worker worker=new Worker( last_name, first_name, (int)ID,  mail, department_id,  Job_ID,  experience,  base_salary, hours, user_name,  password);
-        worker_list.addWorker(worker);
+    public String addWorker(String last_name,String first_name,String ID, String mail,String department_id, String Job_ID, String experience, String base_salary , String user_name, String password){
+        Workers worker_list=Workers.getMySingelton();
         for (int i = 0; i < worker_list.getSize(); i++)
-            if (worker_list.getWorker_i(i).getUser_name().equals(user_name) && worker_list.getWorker_i(i).getPassword().equals(password))
-                return true;
-        return false;
-
+            if (worker_list.getWorker_i(i).getIDperson()==Integer.parseInt(ID) )
+                return null;
+        Worker worker=new Worker( last_name, first_name, Integer.parseInt(ID),  mail, Integer.parseInt(department_id),  Integer.parseInt(Job_ID),Integer.parseInt(experience), Integer.parseInt(base_salary), user_name,  password);
+        worker_list.addWorker(worker);
+        return UUID.randomUUID().toString();
     }
-}
+
 }
