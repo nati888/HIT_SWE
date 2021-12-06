@@ -1,7 +1,9 @@
 package sample.model;
 
+import model.Excel;
 import sample.model.Worker;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Departement {
@@ -21,9 +23,18 @@ public class Departement {
     void changeDepartmentName(String new_name){Name=new_name;}
     void addWorker(Worker new_worker){
         Workers.add(new_worker);
+        Excel.add_Worker_To_Excel(new_worker);
     }
-    void removeWorker(Worker remove_worker) {
+    void removeWorker(Worker remove_worker) throws IOException {
+        Excel.fired_Workers_Excel(remove_worker);
         Workers.remove(remove_worker);
+        Excel.clear_Excel();
+        for(int i=0;i<Workers.size();i++){
+            Worker worker=this.Workers.get(i);
+            Excel.add_Worker_To_Excel(worker);
+
+        }
+
     }
 //    void create_report(){
 //
